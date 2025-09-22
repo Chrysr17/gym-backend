@@ -10,5 +10,6 @@ public interface ClienteService {
     Optional<Cliente> buscarPorId(Integer id);
     Optional<Cliente> buscarPorDni(String dni);
     Cliente guardar(Cliente cliente);
+    Cliente actualizarCliente(Integer id, Cliente clienteActualizado);
     void eliminar(Integer id);
 }
