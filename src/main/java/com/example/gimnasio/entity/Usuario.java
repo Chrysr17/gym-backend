@@ -25,7 +25,4 @@ public class Usuario {
     @Column(name = "rol", nullable = false)
     private Rol rol;
 
-    public enum Rol{
-        ADMIN,RECEPCIONISTA,CLIENTE
-    }
 }

@@ -34,5 +34,4 @@ public class Empleado {
     @JsonBackReference("sede-empleados")
     private Sede sede;
 
-
 }
