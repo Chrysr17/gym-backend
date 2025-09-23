@@ -27,7 +27,6 @@ public class Empleado {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    @JsonBackReference
     private Cargo cargo;
 
     @ManyToOne
@@ -35,8 +34,5 @@ public class Empleado {
     @JsonBackReference("sede-empleados")
     private Sede sede;
 
-    public enum Cargo {
-        Recepcionista, Entrenador, Limpieza
-    }
 
 }
