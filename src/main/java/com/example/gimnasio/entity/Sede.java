@@ -24,14 +24,14 @@ public class Sede {
     private String direccion;
 
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference("sede-clientes")
     private List<Cliente> clientes;
 
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference("sede-maquinas")
     private List<Maquina> maquinas;
 
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference("sede-empleados")
     private List<Empleado> empleados;
 }

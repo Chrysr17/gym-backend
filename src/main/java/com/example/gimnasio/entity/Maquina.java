@@ -31,7 +31,7 @@ public class Maquina {
 
     @ManyToOne
     @JoinColumn(name = "sede_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("sede-maquinas")
     private Sede sede;
 
     public enum Estado {

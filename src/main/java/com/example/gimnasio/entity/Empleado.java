@@ -32,7 +32,7 @@ public class Empleado {
 
     @ManyToOne
     @JoinColumn(name = "sede_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("sede-empleados")
     private Sede sede;
 
     public enum Cargo {

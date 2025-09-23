@@ -38,7 +38,7 @@ public class Cliente {
 
     @ManyToOne
     @JoinColumn(name = "sede_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("sede-clientes")
     private Sede sede;
 
     @Column(name = "fecha_pago")
@@ -51,7 +51,7 @@ public class Cliente {
     private String descripcion;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference("cliente-pagos")
     private List<Pago> pagos;
 
 }
