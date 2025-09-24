@@ -20,7 +20,7 @@ public class Maquina {
     private String nombre;
 
     @Column(columnDefinition = "TEXT")
-    private String descrpcion;
+    private String descripcion;
 
     @Column(length = 255)
     private String imagen;
@@ -34,7 +34,4 @@ public class Maquina {
     @JsonBackReference("sede-maquinas")
     private Sede sede;
 
-    public enum Estado {
-        Operativa, Mantenimiento, Dañada
-    }
 }

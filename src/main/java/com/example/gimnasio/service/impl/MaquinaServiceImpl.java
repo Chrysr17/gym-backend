@@ -31,6 +31,11 @@ public class MaquinaServiceImpl implements MaquinaService {
     }
 
     @Override
+    public Maquina actualizarMaquina(Integer id, Maquina maquina) {
+        return null;
+    }
+
+    @Override
     public void eliminar(Integer id) {
 
     }
