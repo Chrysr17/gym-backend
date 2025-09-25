@@ -3,7 +3,6 @@ package com.example.gimnasio.service.impl;
 import com.example.gimnasio.entity.Cliente;
 import com.example.gimnasio.repository.ClienteRepository;
 import com.example.gimnasio.service.ClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +10,11 @@ import java.util.Optional;
 @Service
 public class ClienteServiceImpl implements ClienteService {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteRepository clienteRepository;
+
+    public ClienteServiceImpl(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
 
     @Override
     public List<Cliente> listarTodos() {

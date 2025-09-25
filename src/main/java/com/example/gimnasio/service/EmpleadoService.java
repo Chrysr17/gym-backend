@@ -9,6 +9,6 @@ public interface EmpleadoService {
     List<Empleado> listarTodos();
     Optional<Empleado> buscarPorId(Integer id);
     Empleado guardar(Empleado empleado);
-    Empleado actualizarEmpleado(Integer id, Empleado empleado);
+    Empleado actualizarEmpleado(Integer id, Empleado empleadoActualizado);
     void eliminar(Integer id);
 }

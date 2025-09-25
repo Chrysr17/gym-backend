@@ -3,7 +3,6 @@ package com.example.gimnasio.service.impl;
 import com.example.gimnasio.entity.Empleado;
 import com.example.gimnasio.repository.EmpleadoRepository;
 import com.example.gimnasio.service.EmpleadoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.Optional;
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService {
 
-    @Autowired
-    private EmpleadoRepository empleadoRepository;
+    private final EmpleadoRepository empleadoRepository;
+
+    public EmpleadoServiceImpl(EmpleadoRepository empleadoRepository) {
+        this.empleadoRepository = empleadoRepository;
+    }
 
     @Override
     public List<Empleado> listarTodos() {
@@ -31,8 +33,15 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public Empleado actualizarEmpleado(Integer id, Empleado empleado) {
-        return empleadoRepository.save(empleado);
+    public Empleado actualizarEmpleado(Integer id, Empleado empleadoActualizado) {
+        return empleadoRepository.findById(id)
+                .map(empleadoExistente -> {
+                    empleadoExistente.setNombre(empleadoActualizado.getNombre());
+                    empleadoExistente.setTelefono(empleadoActualizado.getTelefono());
+                    empleadoExistente.setCargo(empleadoActualizado.getCargo());
+                    empleadoExistente.setSede(empleadoActualizado.getSede());
+                    return empleadoRepository.save(empleadoActualizado);
+                }).orElseThrow(() -> new RuntimeException("Empleado no encontrado"));
     }
 
     @Override

@@ -12,8 +12,11 @@ import java.util.Optional;
 @Service
 public class SedeServiceImpl implements SedeService {
 
-    @Autowired
-    private SedeRepository sedeRepository;
+    private final SedeRepository sedeRepository;
+
+    public SedeServiceImpl(SedeRepository sedeRepository) {
+        this.sedeRepository = sedeRepository;
+    }
 
     @Override
     public List<Sede> listarTodas() {

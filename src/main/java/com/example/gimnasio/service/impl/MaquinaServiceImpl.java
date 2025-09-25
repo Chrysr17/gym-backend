@@ -3,7 +3,6 @@ package com.example.gimnasio.service.impl;
 import com.example.gimnasio.entity.Maquina;
 import com.example.gimnasio.repository.MaquinaRepository;
 import com.example.gimnasio.service.MaquinaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.Optional;
 @Service
 public class MaquinaServiceImpl implements MaquinaService {
 
-    @Autowired
-    private MaquinaRepository maquinaRepository;
+    private final MaquinaRepository maquinaRepository;
+
+    public MaquinaServiceImpl(MaquinaRepository maquinaRepository) {
+        this.maquinaRepository = maquinaRepository;
+    }
 
     @Override
     public List<Maquina> listarTodas() {
@@ -31,7 +33,7 @@ public class MaquinaServiceImpl implements MaquinaService {
     }
 
     @Override
-    public Maquina actualizarMaquina(Integer id, Maquina maquina) {
+    public Maquina actualizarMaquina(Integer id, Maquina maquinaActualizada) {
         return null;
     }
 

@@ -12,8 +12,11 @@ import java.util.Optional;
 @Service
 public class PagoServiceImpl implements PagoService {
 
-    @Autowired
-    private PagoRepository pagoRepository;
+    private final PagoRepository pagoRepository;
+
+    public PagoServiceImpl(PagoRepository pagoRepository) {
+        this.pagoRepository = pagoRepository;
+    }
 
     @Override
     public List<Pago> listarTodos() {

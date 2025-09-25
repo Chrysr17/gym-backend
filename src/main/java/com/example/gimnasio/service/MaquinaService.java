@@ -9,6 +9,6 @@ public interface MaquinaService {
     List<Maquina> listarTodas();
     Optional<Maquina> buscarPorId(Integer id);
     Maquina guardar(Maquina maquina);
-    Maquina actualizarMaquina (Integer id, Maquina maquina);
+    Maquina actualizarMaquina (Integer id, Maquina maquinaActualizada);
     void eliminar(Integer id);
 }

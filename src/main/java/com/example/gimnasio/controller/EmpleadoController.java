@@ -36,16 +36,12 @@ public class EmpleadoController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Empleado> actualizar(@PathVariable Integer id, @RequestBody Empleado empleado){
-        return empleadoService.buscarPorId(id)
-                .map(existente ->{
-                    existente.setNombre(empleado.getNombre());
-                    existente.setDni(empleado.getDni());
-                    existente.setTelefono(empleado.getTelefono());
-                    existente.setSede(empleado.getSede());
-                    existente.setCargo(empleado.getCargo());
-                    return ResponseEntity.ok(empleadoService.guardar(existente));
-                })
-                .orElse(ResponseEntity.notFound().build());
+        try {
+            Empleado actualizado = empleadoService.actualizarEmpleado(id, empleado);
+            return ResponseEntity.ok(actualizado);
+        }catch (RuntimeException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
