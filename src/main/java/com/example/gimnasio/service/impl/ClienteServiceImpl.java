@@ -5,7 +5,6 @@ import com.example.gimnasio.repository.ClienteRepository;
 import com.example.gimnasio.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +36,19 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Cliente actualizarCliente(Integer id, Cliente clienteActualizado) {
-        return clienteRepository.save(clienteActualizado);
+        return clienteRepository.findById(id)
+                .map(clienteExistente -> {
+                    clienteExistente.setNombre(clienteActualizado.getNombre());
+                    clienteExistente.setDni(clienteActualizado.getDni());
+                    clienteExistente.setTelefono(clienteActualizado.getTelefono());
+                    clienteExistente.setCorreo(clienteActualizado.getCorreo());
+                    clienteExistente.setDireccion(clienteActualizado.getDireccion());
+                    clienteExistente.setSede(clienteActualizado.getSede());
+                    clienteExistente.setFechaPago(clienteActualizado.getFechaPago());
+                    clienteExistente.setMensualidad(clienteActualizado.getMensualidad());
+                    clienteExistente.setDescripcion((clienteActualizado.getDescripcion()));
+                    return clienteRepository.save(clienteExistente);
+                }).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
     }
 
     @Override

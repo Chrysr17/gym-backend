@@ -2,7 +2,6 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Cliente;
 import com.example.gimnasio.service.ClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,11 +43,13 @@ public class ClienteController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> actualizar(@PathVariable Integer id, @RequestBody Cliente cliente) {
-        Cliente actualizado = clienteService.actualizarCliente(id, cliente);
-        if (actualizado== null){
+        try {
+            Cliente actualizado = clienteService.actualizarCliente(id, cliente);
+            return ResponseEntity.ok(actualizado);
+
+        } catch (RuntimeException e){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(actualizado);
     }
 
     @DeleteMapping("/{id}")

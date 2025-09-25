@@ -2,7 +2,6 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Empleado;
 import com.example.gimnasio.service.EmpleadoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,7 +47,6 @@ public class EmpleadoController {
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Empleado> eliminar(@PathVariable Integer id){
