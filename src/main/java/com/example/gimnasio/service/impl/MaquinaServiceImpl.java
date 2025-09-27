@@ -19,26 +19,35 @@ public class MaquinaServiceImpl implements MaquinaService {
 
     @Override
     public List<Maquina> listarTodas() {
-        return List.of();
+        return maquinaRepository.findAll();
     }
 
     @Override
     public Optional<Maquina> buscarPorId(Integer id) {
-        return Optional.empty();
+        return maquinaRepository.findById(id);
+
     }
 
     @Override
     public Maquina guardar(Maquina maquina) {
-        return null;
+        return maquinaRepository.save(maquina);
     }
 
     @Override
     public Maquina actualizarMaquina(Integer id, Maquina maquinaActualizada) {
-        return null;
+        return maquinaRepository.findById(id)
+                .map(maquinaExistente -> {
+                    maquinaExistente.setNombre(maquinaActualizada.getNombre());
+                    maquinaExistente.setDescripcion(maquinaActualizada.getDescripcion());
+                    maquinaExistente.setImagen(maquinaActualizada.getImagen());
+                    maquinaExistente.setEstado(maquinaActualizada.getEstado());
+                    maquinaExistente.setSede(maquinaActualizada.getSede());
+                    return maquinaRepository.save(maquinaActualizada);
+                }).orElseThrow(() -> new RuntimeException("Maquina no encontrada"));
     }
 
     @Override
     public void eliminar(Integer id) {
-
+        maquinaRepository.deleteById(id);
     }
 }
