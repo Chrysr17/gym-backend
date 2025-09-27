@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/maquinas")
 public class MaquinaController {
 
-    @Autowired
-    private MaquinaService maquinaService;
+    private final MaquinaService maquinaService;
 
+    public MaquinaController(MaquinaService maquinaService) {
+        this.maquinaService = maquinaService;
+
+    }
 }
