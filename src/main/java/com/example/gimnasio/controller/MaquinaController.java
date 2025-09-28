@@ -3,10 +3,7 @@ package com.example.gimnasio.controller;
 import com.example.gimnasio.entity.Maquina;
 import com.example.gimnasio.service.MaquinaService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,10 +23,17 @@ public class MaquinaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Maquina> buscarPorId(@PathVariable Integer Id){
-        return maquinaService.buscarPorId(Id)
+    public ResponseEntity<Maquina> buscarPorId(@PathVariable Integer id){
+        return maquinaService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PostMapping
+    public Maquina guardar(@RequestBody Maquina maquina){
+        return maquinaService.guardar(maquina);
+    }
+
+
 
 }
