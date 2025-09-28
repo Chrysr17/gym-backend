@@ -34,4 +34,9 @@ public class Maquina {
     @JsonBackReference("sede-maquinas")
     private Sede sede;
 
+    @ManyToOne
+    @JoinColumn(name = "proveedor_id",nullable = false)
+    @JsonBackReference("proveedor-maquinas")
+    private Proveedor proveedor;
+
 }

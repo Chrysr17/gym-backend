@@ -21,7 +21,7 @@ public class Cliente {
     @Column(name = "cliente_id")
     private Integer clienteId;
 
-    @Column(nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String nombre;
 
     @Column(nullable = false, unique = true, length = 20)
