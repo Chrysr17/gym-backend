@@ -41,7 +41,12 @@ public class MaquinaServiceImpl implements MaquinaService {
                     maquinaExistente.setDescripcion(maquinaActualizada.getDescripcion());
                     maquinaExistente.setImagen(maquinaActualizada.getImagen());
                     maquinaExistente.setEstado(maquinaActualizada.getEstado());
-                    //maquinaExistente.setSede(maquinaActualizada.getSede());
+                    if (maquinaActualizada.getSede() != null) {
+                        maquinaExistente.setSede(maquinaActualizada.getSede());
+                    }
+                    if (maquinaActualizada.getProveedor() != null) {
+                        maquinaExistente.setProveedor(maquinaActualizada.getProveedor());
+                    }
                     return maquinaRepository.save(maquinaActualizada);
                 }).orElseThrow(() -> new RuntimeException("Maquina no encontrada"));
     }

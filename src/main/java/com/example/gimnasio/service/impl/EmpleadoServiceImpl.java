@@ -39,7 +39,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
                     empleadoExistente.setNombre(empleadoActualizado.getNombre());
                     empleadoExistente.setTelefono(empleadoActualizado.getTelefono());
                     empleadoExistente.setCargo(empleadoActualizado.getCargo());
-                    empleadoExistente.setSede(empleadoActualizado.getSede());
+                    //empleadoExistente.setSede(empleadoActualizado.getSede());
                     return empleadoRepository.save(empleadoActualizado);
                 }).orElseThrow(() -> new RuntimeException("Empleado no encontrado"));
     }
