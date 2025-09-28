@@ -39,9 +39,9 @@ public class MaquinaController {
         try {
             Maquina actualizada = maquinaService.actualizarMaquina(id, maquina);
             return ResponseEntity.ok(actualizada);
-        }catch (RuntimeException e){
-
-        }return ResponseEntity.notFound().build();
+        } catch (RuntimeException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")

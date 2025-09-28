@@ -34,8 +34,4 @@ public class Pago {
     @Column(nullable = false)
     private EstadoPago estado = EstadoPago.Pendiente;
 
-    public enum EstadoPago {
-        Pagado, Pendiente
-    }
-
 }

@@ -39,6 +39,17 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
+    public Pago actualizar(Integer id, Pago pagoActualizado) {
+        return pagoRepository.findById(id)
+                .map(pagoExistente -> {
+                    pagoExistente.setFecha(pagoActualizado.getFecha());
+                    pagoExistente.setMonto(pagoActualizado.getMonto());
+                    pagoExistente.setEstado(pagoActualizado.getEstado());
+                    return pagoRepository.save(pagoActualizado);
+                }).orElseThrow(() -> new RuntimeException("Pago no encontrado"));
+    }
+
+    @Override
     public void eliminar(Integer id) {
         pagoRepository.deleteById(id);
     }
