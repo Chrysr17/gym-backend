@@ -34,6 +34,20 @@ public class MaquinaController {
         return maquinaService.guardar(maquina);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Maquina> actualizar(@PathVariable Integer id, @RequestBody Maquina maquina){
+        try {
+            Maquina actualizada = maquinaService.actualizarMaquina(id, maquina);
+            return ResponseEntity.ok(actualizada);
+        }catch (RuntimeException e){
 
+        }return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Maquina> eliminar(@PathVariable Integer id){
+        maquinaService.eliminar(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

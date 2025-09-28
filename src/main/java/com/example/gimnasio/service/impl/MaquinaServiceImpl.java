@@ -41,7 +41,7 @@ public class MaquinaServiceImpl implements MaquinaService {
                     maquinaExistente.setDescripcion(maquinaActualizada.getDescripcion());
                     maquinaExistente.setImagen(maquinaActualizada.getImagen());
                     maquinaExistente.setEstado(maquinaActualizada.getEstado());
-                    maquinaExistente.setSede(maquinaActualizada.getSede());
+                    //maquinaExistente.setSede(maquinaActualizada.getSede());
                     return maquinaRepository.save(maquinaActualizada);
                 }).orElseThrow(() -> new RuntimeException("Maquina no encontrada"));
     }
@@ -50,4 +50,5 @@ public class MaquinaServiceImpl implements MaquinaService {
     public void eliminar(Integer id) {
         maquinaRepository.deleteById(id);
     }
+
 }

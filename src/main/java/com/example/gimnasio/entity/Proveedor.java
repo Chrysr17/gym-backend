@@ -26,7 +26,7 @@ public class Proveedor {
     @Column(nullable = false, length = 100)
     private String categoria;
 
-    @OneToMany(mappedBy = "maquina", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("proveedor-maquinas")
     private List<Maquina> maquinas;
 

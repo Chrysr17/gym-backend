@@ -46,7 +46,6 @@ public class ClienteController {
         try {
             Cliente actualizado = clienteService.actualizarCliente(id, cliente);
             return ResponseEntity.ok(actualizado);
-
         } catch (RuntimeException e){
             return ResponseEntity.notFound().build();
         }
