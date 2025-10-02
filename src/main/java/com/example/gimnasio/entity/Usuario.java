@@ -1,5 +1,6 @@
 package com.example.gimnasio.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,5 +25,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(name = "rol", nullable = false)
     private Rol rol;
+
+    @OneToOne(mappedBy = "usuario")
+    @JsonManagedReference("cliente-usuario")
+    private Cliente cliente;
 
 }

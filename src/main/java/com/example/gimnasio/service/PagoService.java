@@ -10,6 +10,6 @@ public interface PagoService {
     List<Pago> listarPorCliente(Integer clienteId);
     Optional<Pago> buscarPorId(Integer id);
     Pago guardar(Pago pago);
-    Pago actualizar(Integer id, Pago pago);
+    Pago actualizarPago(Integer id, Pago pagoActualizado);
     void eliminar(Integer id);
 }

@@ -1,6 +1,7 @@
 package com.example.gimnasio.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -38,7 +39,7 @@ public class Cliente {
 
     @ManyToOne
     @JoinColumn(name = "sede_id", nullable = false)
-    @JsonBackReference("sede-clientes")
+    @JsonIgnoreProperties("clientes")
     private Sede sede;
 
     @Column(name = "fecha_pago")
@@ -53,5 +54,10 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference("cliente-pagos")
     private List<Pago> pagos;
+
+    @OneToOne
+    @JoinColumn(name = "usuario_id", nullable = true)
+    @JsonBackReference("cliente-usuario")
+    private Usuario usuario;
 
 }

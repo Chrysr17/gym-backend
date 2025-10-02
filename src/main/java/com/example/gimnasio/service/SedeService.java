@@ -9,5 +9,6 @@ public interface SedeService {
     List<Sede> listarTodas();
     Optional<Sede> buscarPorId(Integer id);
     Sede guardar(Sede sede);
+    Sede actualizarSede(Integer id, Sede sedeActualizada);
     void eliminar(Integer id);
 }

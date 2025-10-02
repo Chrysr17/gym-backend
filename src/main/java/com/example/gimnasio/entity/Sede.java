@@ -1,5 +1,7 @@
 package com.example.gimnasio.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,14 +26,14 @@ public class Sede {
     private String direccion;
 
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference("sede-clientes")
+    @JsonIgnore
     private List<Cliente> clientes;
 
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference("sede-maquinas")
+    @JsonIgnore
     private List<Maquina> maquinas;
 
     @OneToMany(mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference("sede-empleados")
+    @JsonIgnore
     private List<Empleado> empleados;
 }

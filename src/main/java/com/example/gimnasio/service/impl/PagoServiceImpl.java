@@ -39,7 +39,7 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public Pago actualizar(Integer id, Pago pagoActualizado) {
+    public Pago actualizarPago(Integer id, Pago pagoActualizado) {
         return pagoRepository.findById(id)
                 .map(pagoExistente -> {
                     pagoExistente.setFecha(pagoActualizado.getFecha());

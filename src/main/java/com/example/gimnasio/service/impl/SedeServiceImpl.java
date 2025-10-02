@@ -34,6 +34,18 @@ public class SedeServiceImpl implements SedeService {
     }
 
     @Override
+    public Sede actualizarSede(Integer id, Sede sedeActualizada) {
+        return sedeRepository.findById(id)
+                .map(sedeExistente -> {
+                    sedeExistente.setNombre(sedeActualizada.getNombre());
+                    sedeExistente.setDireccion(sedeActualizada.getDireccion());
+                    sedeExistente.setMaquinas(sedeActualizada.getMaquinas());
+                    sedeExistente.setEmpleados(sedeActualizada.getEmpleados());
+                    return sedeRepository.save(sedeActualizada);
+                }).orElseThrow(() -> new RuntimeException("Sede no encontrada"));
+    }
+
+    @Override
     public void eliminar(Integer id) {
         sedeRepository.deleteById(id);
     }
