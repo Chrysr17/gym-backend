@@ -17,7 +17,6 @@ public class EmpleadoController {
         this.empleadoService = empleadoService;
     }
 
-
     @GetMapping
     public List<Empleado> listar(){
         return empleadoService.listarTodos();

@@ -1,11 +1,15 @@
 package com.example.gimnasio.service.impl;
 
+import com.example.gimnasio.entity.Cliente;
+import com.example.gimnasio.entity.EstadoPago;
 import com.example.gimnasio.entity.Pago;
+import com.example.gimnasio.repository.ClienteRepository;
 import com.example.gimnasio.repository.PagoRepository;
 import com.example.gimnasio.service.PagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +17,11 @@ import java.util.Optional;
 public class PagoServiceImpl implements PagoService {
 
     private final PagoRepository pagoRepository;
+    private final ClienteRepository clienteRepository;
 
-    public PagoServiceImpl(PagoRepository pagoRepository) {
+    public PagoServiceImpl(PagoRepository pagoRepository, ClienteRepository clienteRepository) {
         this.pagoRepository = pagoRepository;
+        this.clienteRepository = clienteRepository;
     }
 
     @Override
@@ -47,6 +53,16 @@ public class PagoServiceImpl implements PagoService {
                     pagoExistente.setEstado(pagoActualizado.getEstado());
                     return pagoRepository.save(pagoActualizado);
                 }).orElseThrow(() -> new RuntimeException("Pago no encontrado"));
+    }
+
+    @Override
+    public Pago RegistrarPago(Integer id, Pago pago) {
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente no econtrado"));
+        pago.setCliente(cliente);
+        pago.setFecha(LocalDate.now());
+        pago.setEstado(EstadoPago.Pagado);
+        return pagoRepository.save(pago);
     }
 
     @Override

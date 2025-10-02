@@ -44,6 +44,12 @@ public class PagoController {
         }
     }
 
+    @PostMapping("/registrar/{id}")
+    public ResponseEntity<Pago> registrarPago(@PathVariable Integer id, @RequestBody Pago pago){
+        Pago pagoNuevo = pagoService.RegistrarPago(id, pago);
+        return ResponseEntity.ok(pagoNuevo);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Pago> eliminar(@PathVariable Integer id){
         pagoService.eliminar(id);

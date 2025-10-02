@@ -10,7 +10,7 @@ public interface UsuarioService {
     Optional<Usuario> buscarPorId(Integer id);
     Optional<Usuario> buscarPorDni(String dni);
     Usuario guardar(Usuario usuario);
-    Usuario actualizarCliente(Integer id, Usuario UsuarioActualizado);
+    Usuario actualizarUsuario(Integer id, Usuario UsuarioActualizado);
     void eliminar(Integer id);
 
 }
