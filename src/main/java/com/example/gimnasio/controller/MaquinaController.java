@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Maquina;
 import com.example.gimnasio.service.MaquinaService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +31,9 @@ public class MaquinaController {
     }
 
     @PostMapping
-    public Maquina guardar(@RequestBody Maquina maquina){
-        return maquinaService.guardar(maquina);
+    public ResponseEntity<Maquina> guardar(@RequestBody Maquina maquina){
+        Maquina nueva = maquinaService.guardar(maquina);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nueva);
     }
 
     @PutMapping("/{id}")
