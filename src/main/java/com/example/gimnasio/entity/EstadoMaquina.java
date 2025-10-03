@@ -1,5 +1,5 @@
 package com.example.gimnasio.entity;
 
-public enum Estado {
+public enum EstadoMaquina {
     Operativa, Mantenimiento, Dañada
 }

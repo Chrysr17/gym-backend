@@ -27,7 +27,7 @@ public class Maquina {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Estado estado = Estado.Operativa;
+    private EstadoMaquina estado = EstadoMaquina.Operativa;
 
     @ManyToOne
     @JoinColumn(name = "sede_id", nullable = false)
