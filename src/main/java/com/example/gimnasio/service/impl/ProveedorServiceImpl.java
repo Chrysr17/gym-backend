@@ -3,10 +3,12 @@ package com.example.gimnasio.service.impl;
 import com.example.gimnasio.entity.Proveedor;
 import com.example.gimnasio.repository.ProveedorRepository;
 import com.example.gimnasio.service.ProveedorService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ProveedorServiceImpl implements ProveedorService {
 
     private final ProveedorRepository proveedorRepository;
