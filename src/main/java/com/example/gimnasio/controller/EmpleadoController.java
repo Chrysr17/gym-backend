@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Empleado;
 import com.example.gimnasio.service.EmpleadoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,8 +31,9 @@ public class EmpleadoController {
     }
 
     @PostMapping
-    public Empleado guardar(@RequestBody Empleado empleado){
-        return empleadoService.guardar(empleado);
+    public ResponseEntity<Empleado> guardar(@RequestBody Empleado empleado){
+        Empleado nuevo = empleadoService.guardar(empleado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
     @PutMapping("/{id}")
