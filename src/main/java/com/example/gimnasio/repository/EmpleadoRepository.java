@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
     List<Empleado> findBySede_SedeId(Integer sedeId);
-    List<Empleado> findByCargp(Cargo cargo);
+    List<Empleado> findByCargo(Cargo cargo);
 }
