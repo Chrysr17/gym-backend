@@ -56,4 +56,9 @@ public class MaquinaServiceImpl implements MaquinaService {
         maquinaRepository.deleteById(id);
     }
 
+    @Override
+    public Optional<Maquina> buscarPorEstado(String estado) {
+        return maquinaRepository.findByEstado(estado);
+    }
+
 }
