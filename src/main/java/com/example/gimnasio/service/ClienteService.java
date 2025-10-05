@@ -12,4 +12,5 @@ public interface ClienteService {
     Cliente guardar(Cliente cliente);
     Cliente actualizarCliente(Integer id, Cliente clienteActualizado);
     void eliminar(Integer id);
+    Optional<Cliente> listarPorSede(Integer sedeId);
 }

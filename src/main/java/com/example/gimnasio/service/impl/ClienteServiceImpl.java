@@ -57,4 +57,9 @@ public class ClienteServiceImpl implements ClienteService {
     public void eliminar(Integer id) {
         clienteRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Cliente> listarPorSede(Integer sedeId) {
+        return clienteRepository.findBySede(sedeId);
+    }
 }
