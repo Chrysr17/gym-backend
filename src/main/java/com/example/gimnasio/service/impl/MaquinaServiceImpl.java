@@ -1,5 +1,6 @@
 package com.example.gimnasio.service.impl;
 
+import com.example.gimnasio.entity.EstadoMaquina;
 import com.example.gimnasio.entity.Maquina;
 import com.example.gimnasio.repository.MaquinaRepository;
 import com.example.gimnasio.service.MaquinaService;
@@ -57,8 +58,9 @@ public class MaquinaServiceImpl implements MaquinaService {
     }
 
     @Override
-    public Optional<Maquina> buscarPorEstado(String estado) {
-        return maquinaRepository.findByEstado(estado);
+    public List<Maquina> buscarPorEstado(String estado) {
+        EstadoMaquina estadoMaquina = EstadoMaquina.valueOf(estado);
+        return maquinaRepository.findByEstado(estadoMaquina);
     }
 
 }

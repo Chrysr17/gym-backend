@@ -31,10 +31,8 @@ public class MaquinaController {
     }
 
     @GetMapping("/estado/{estado}")
-    public ResponseEntity<Maquina> buscarPorEstado(@RequestBody String estado){
-        return maquinaService.buscarPorEstado(estado)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public List<Maquina> buscarPorEstado(@PathVariable String estado){
+        return maquinaService.buscarPorEstado(estado);
     }
 
     @PostMapping

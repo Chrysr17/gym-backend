@@ -11,5 +11,5 @@ public interface MaquinaService {
     Maquina guardar(Maquina maquina);
     Maquina actualizarMaquina (Integer id, Maquina maquinaActualizada);
     void eliminar(Integer id);
-    Optional<Maquina> buscarPorEstado(String estado);
+    List<Maquina> buscarPorEstado(String estado);
 }
