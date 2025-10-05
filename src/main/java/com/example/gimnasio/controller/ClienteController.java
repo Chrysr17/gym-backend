@@ -59,11 +59,8 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/sede/{id}")
-    public ResponseEntity<Cliente> listarPorSede(@PathVariable Integer sedeId){
-        return clienteService.listarPorSede(sedeId)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/sede/{sedeId}")
+    public List<Cliente> listarPorSede(@PathVariable Integer sedeId) {
+        return clienteService.listarPorSede(sedeId);
     }
-
 }

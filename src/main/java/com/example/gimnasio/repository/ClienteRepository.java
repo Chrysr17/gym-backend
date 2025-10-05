@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
     Optional<Cliente> findByDni(String dni);
-    Optional<Cliente> findBySede(Integer sedeId);
+    List<Cliente> findBySede_SedeId(Integer sedeId);
 
     @Query("SELECT s.nombre, COUNT(c.clienteId) as totalClientes " +
             "FROM Cliente c " +

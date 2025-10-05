@@ -59,7 +59,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Optional<Cliente> listarPorSede(Integer sedeId) {
-        return clienteRepository.findBySede(sedeId);
+    public List<Cliente> listarPorSede(Integer sedeId) {
+        return clienteRepository.findBySede_SedeId(sedeId);
     }
+
 }

@@ -30,6 +30,13 @@ public class MaquinaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/estado/{estado}")
+    public ResponseEntity<Maquina> buscarPorEstado(@RequestBody String estado){
+        return maquinaService.buscarPorEstado(estado)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public ResponseEntity<Maquina> guardar(@RequestBody Maquina maquina){
         Maquina nueva = maquinaService.guardar(maquina);
