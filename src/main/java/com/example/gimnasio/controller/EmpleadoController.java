@@ -30,6 +30,11 @@ public class EmpleadoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/sede/{sedeId}")
+    public List<Empleado> listarPorSede(@PathVariable Integer sedeId){
+        return empleadoService.listarPorSede(sedeId);
+    }
+
     @PostMapping
     public ResponseEntity<Empleado> guardar(@RequestBody Empleado empleado){
         Empleado nuevo = empleadoService.guardar(empleado);
