@@ -48,4 +48,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     public void eliminar(Integer id) {
         empleadoRepository.deleteById(id);
     }
+
+    @Override
+    public List<Empleado> listarPorSede(Integer sedeId) {
+        return empleadoRepository.findBySede_SedeId(sedeId);
+    }
 }
