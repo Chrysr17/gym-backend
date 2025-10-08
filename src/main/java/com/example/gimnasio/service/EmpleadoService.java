@@ -12,4 +12,5 @@ public interface EmpleadoService {
     Empleado actualizarEmpleado(Integer id, Empleado empleadoActualizado);
     void eliminar(Integer id);
     List<Empleado> listarPorSede(Integer sedeId);
+    List<Empleado> listarPorCargo(String Cargo);
 }

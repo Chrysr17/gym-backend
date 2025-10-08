@@ -1,5 +1,6 @@
 package com.example.gimnasio.service.impl;
 
+import com.example.gimnasio.entity.Cargo;
 import com.example.gimnasio.entity.Empleado;
 import com.example.gimnasio.repository.EmpleadoRepository;
 import com.example.gimnasio.service.EmpleadoService;
@@ -52,5 +53,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     @Override
     public List<Empleado> listarPorSede(Integer sedeId) {
         return empleadoRepository.findBySede_SedeId(sedeId);
+    }
+
+    @Override
+    public List<Empleado> listarPorCargo(String cargo) {
+        Cargo cargoEmpleado = Cargo.valueOf(cargo);
+        return empleadoRepository.findByCargo(cargoEmpleado);
     }
 }
