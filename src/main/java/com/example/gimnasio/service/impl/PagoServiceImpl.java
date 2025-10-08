@@ -56,8 +56,8 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public Pago RegistrarPago(Integer id, Pago pago) {
-        Cliente cliente = clienteRepository.findById(id)
+    public Pago RegistrarPago(Integer clienteId, Pago pago) {
+        Cliente cliente = clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RuntimeException("Cliente no econtrado"));
         pago.setCliente(cliente);
         pago.setFecha(LocalDate.now());

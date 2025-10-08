@@ -11,6 +11,6 @@ public interface PagoService {
     Optional<Pago> buscarPorId(Integer id);
     Pago guardar(Pago pago);
     Pago actualizarPago(Integer id, Pago pagoActualizado);
-    Pago RegistrarPago(Integer id, Pago pago);
+    Pago RegistrarPago(Integer clienteId, Pago pago);
     void eliminar(Integer id);
 }
