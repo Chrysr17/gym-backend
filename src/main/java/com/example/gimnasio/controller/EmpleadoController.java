@@ -20,13 +20,13 @@ public class EmpleadoController {
     }
 
     @GetMapping
-    @Operation(summary = "Lista tpdps los empleados")
+    @Operation(summary = "Lista todos los empleados")
     public List<Empleado> listar(){
         return empleadoService.listarTodos();
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar un empleado por id")
+    @Operation(summary = "Busca un empleado por id")
     public ResponseEntity<Empleado> buscarPorId(@PathVariable Integer id) {
         return empleadoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
