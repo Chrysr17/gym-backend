@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Empleado;
 import com.example.gimnasio.service.EmpleadoService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,13 @@ public class EmpleadoController {
     }
 
     @GetMapping
+    @Operation(summary = "Lista tpdps los empleados")
     public List<Empleado> listar(){
         return empleadoService.listarTodos();
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Buscar un empleado por id")
     public ResponseEntity<Empleado> buscarPorId(@PathVariable Integer id) {
         return empleadoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
@@ -31,22 +34,26 @@ public class EmpleadoController {
     }
 
     @GetMapping("/sede/{sedeId}")
+    @Operation(summary = "Lista empleados por sedeId")
     public List<Empleado> listarPorSede(@PathVariable Integer sedeId){
         return empleadoService.listarPorSede(sedeId);
     }
 
     @GetMapping("/cargo/{cargo}")
+    @Operation(summary = "Lista Empleados por cargo")
     public List<Empleado> listarPorCargo(@PathVariable String cargo){
         return empleadoService.listarPorCargo(cargo);
     }
 
     @PostMapping
+    @Operation(summary = "Guarda un nuevo empleado")
     public ResponseEntity<Empleado> guardar(@RequestBody Empleado empleado){
         Empleado nuevo = empleadoService.guardar(empleado);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Actualiza un empleado por id")
     public ResponseEntity<Empleado> actualizar(@PathVariable Integer id, @RequestBody Empleado empleado){
         try {
             Empleado actualizado = empleadoService.actualizarEmpleado(id, empleado);
@@ -57,6 +64,7 @@ public class EmpleadoController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Elimina un empleado por id")
     public ResponseEntity<Empleado> eliminar(@PathVariable Integer id){
         empleadoService.eliminar(id);
         return ResponseEntity.noContent().build();
