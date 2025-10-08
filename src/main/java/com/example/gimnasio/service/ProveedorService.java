@@ -11,4 +11,5 @@ public interface ProveedorService {
     Proveedor guardar(Proveedor proveedor);
     Proveedor actualizar(Integer id, Proveedor proveedorActualizado);
     void eliminar(Integer id);
+    List<Proveedor> listarPorCategoria(String categoria);
 }

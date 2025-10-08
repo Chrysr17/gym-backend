@@ -47,4 +47,9 @@ public class ProveedorServiceImpl implements ProveedorService {
     public void eliminar(Integer id) {
         proveedorRepository.deleteById(id);
     }
+
+    @Override
+    public List<Proveedor> listarPorCategoria(String categoria) {
+        return List.of();
+    }
 }
