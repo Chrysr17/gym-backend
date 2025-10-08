@@ -35,6 +35,11 @@ public class EmpleadoController {
         return empleadoService.listarPorSede(sedeId);
     }
 
+    @GetMapping("/cargo/{cargo}")
+    public List<Empleado> listarPorCargo(@PathVariable String cargo){
+        return empleadoService.listarPorCargo(cargo);
+    }
+
     @PostMapping
     public ResponseEntity<Empleado> guardar(@RequestBody Empleado empleado){
         Empleado nuevo = empleadoService.guardar(empleado);
