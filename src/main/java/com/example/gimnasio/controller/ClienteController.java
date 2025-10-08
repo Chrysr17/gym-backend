@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Cliente;
 import com.example.gimnasio.service.ClienteService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,13 @@ public class ClienteController {
     }
 
     @GetMapping
+    @Operation(summary = "lista todos los clientes")
     public List<Cliente> listar() {
         return clienteService.listarTodos();
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "busca por id")
     public ResponseEntity<Cliente> buscarPorId(@PathVariable Integer id) {
         return clienteService.buscarPorId(id)
                 .map(ResponseEntity::ok)
@@ -31,6 +34,7 @@ public class ClienteController {
     }
 
     @GetMapping("/dni/{dni}")
+    @Operation(summary = "buscar por dni")
     public ResponseEntity<Cliente> buscarPorDni(@PathVariable String dni) {
         return clienteService.buscarPorDni(dni)
                 .map(ResponseEntity::ok)
@@ -38,12 +42,14 @@ public class ClienteController {
     }
 
     @PostMapping
+    @Operation(summary = "guarda un nuevo cliente")
     public ResponseEntity<Cliente> guardar(@RequestBody Cliente cliente) {
         Cliente nuevo = clienteService.guardar(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "actualiza un cliente por id")
     public ResponseEntity<Cliente> actualizar(@PathVariable Integer id, @RequestBody Cliente cliente) {
         try {
             Cliente actualizado = clienteService.actualizarCliente(id, cliente);
@@ -54,12 +60,14 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "elimina un cliente por id")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         clienteService.eliminar(id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/sede/{sedeId}")
+    @Operation(summary = "lista por sedeId")
     public List<Cliente> listarPorSede(@PathVariable Integer sedeId) {
         return clienteService.listarPorSede(sedeId);
     }
