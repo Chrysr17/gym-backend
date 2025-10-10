@@ -50,6 +50,6 @@ public class ProveedorServiceImpl implements ProveedorService {
 
     @Override
     public List<Proveedor> listarPorCategoria(String categoria) {
-        return List.of();
+        return proveedorRepository.findByCategoria(categoria);
     }
 }
