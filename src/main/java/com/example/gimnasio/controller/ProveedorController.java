@@ -30,6 +30,11 @@ public class ProveedorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/categoria/{categoria}")
+    public List<Proveedor> listarPorCategoria(@PathVariable String categoria){
+        return proveedorService.listarPorCategoria(categoria);
+    }
+
     @PostMapping
     public ResponseEntity<Proveedor> guardar(@RequestBody Proveedor proveedor){
         Proveedor nuevo = proveedorService.guardar(proveedor);
