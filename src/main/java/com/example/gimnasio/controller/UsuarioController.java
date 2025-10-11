@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Usuario;
 import com.example.gimnasio.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,13 @@ public class UsuarioController {
     }
 
     @GetMapping
+    @Operation(summary = "Lista todos los usuarios")
     public List<Usuario> listar(){
         return usuarioService.listarTodos();
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Busca un pago por id")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Integer id){
         return usuarioService.buscarPorId(id)
                 .map(ResponseEntity::ok)
@@ -31,12 +34,14 @@ public class UsuarioController {
     }
 
     @PostMapping
+    @Operation(summary = "Guarda un usuario")
     public ResponseEntity<Usuario> guardar(@RequestBody Usuario usuario){
         Usuario nuevo = usuarioService.guardar(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Actualiza un usuario por id")
     public ResponseEntity<Usuario> actualizar(@PathVariable Integer id, @RequestBody Usuario usuario){
         try {
             Usuario actualizado = usuarioService.actualizarUsuario(id, usuario);
@@ -47,6 +52,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Elimina un usuario por id")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id){
         usuarioService.eliminar(id);
         return ResponseEntity.noContent().build();
