@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Proveedor;
 import com.example.gimnasio.service.ProveedorService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,13 @@ public class ProveedorController {
     }
 
     @GetMapping
+    @Operation(summary = "Lista todos los proveedores")
     public List<Proveedor> listar(){
         return proveedorService.listarTodos();
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Busca un proveedor por id")
     public ResponseEntity<Proveedor> buscarPorId(@PathVariable Integer id){
         return proveedorService.buscarPorId(id)
                 .map(ResponseEntity::ok)
@@ -31,17 +34,20 @@ public class ProveedorController {
     }
 
     @GetMapping("/categoria/{categoria}")
+    @Operation(summary = "Lista proveedores por categoria")
     public List<Proveedor> listarPorCategoria(@PathVariable String categoria){
         return proveedorService.listarPorCategoria(categoria);
     }
 
     @PostMapping
+    @Operation(summary = "Guarda un proveedor")
     public ResponseEntity<Proveedor> guardar(@RequestBody Proveedor proveedor){
         Proveedor nuevo = proveedorService.guardar(proveedor);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Actualiza un proveedor por id")
     public ResponseEntity<Proveedor> actualizar(@PathVariable Integer id, @RequestBody Proveedor proveedor){
         try {
             Proveedor actualizado =  proveedorService.actualizar(id, proveedor);
@@ -52,6 +58,7 @@ public class ProveedorController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Elimina un proveedor por id")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id){
         proveedorService.eliminar(id);
         return ResponseEntity.noContent().build();
