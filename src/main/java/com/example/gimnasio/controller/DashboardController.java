@@ -1,6 +1,7 @@
 package com.example.gimnasio.controller;
 
 import com.example.gimnasio.service.DashboardService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class DashboardController {
     }
 
     @GetMapping("/resumen")
+    @Operation(summary = "Muestra el resumen para el dashboard")
     public Map<String, Object> obtenerResumen(){
         Map<String, Object> resumen = new HashMap<>();
         resumen.put("ingresosTotales", dashboardService.obtenerIngresosTotales());
