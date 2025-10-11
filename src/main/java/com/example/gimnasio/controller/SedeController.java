@@ -41,7 +41,7 @@ public class SedeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(nueva);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Operation(summary = "Actualiza una sede por id")
     public ResponseEntity<Sede> actualizar(@PathVariable Integer id, @RequestBody Sede sede){
         try {
