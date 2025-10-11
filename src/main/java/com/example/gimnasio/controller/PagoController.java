@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.entity.Pago;
 import com.example.gimnasio.service.PagoService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,16 +19,19 @@ public class PagoController {
     }
 
     @GetMapping
+    @Operation(summary = "Lista todos los pagos")
     public List<Pago> listar(){
         return pagoService.listarTodos();
     }
 
     @GetMapping("/cliente/{id}")
+    @Operation(summary = "Lista pagos por cliente(id)")
     public List<Pago> listarPorCliente(@PathVariable Integer id){
         return pagoService.listarPorCliente(id);
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Busca pagos por id")
     public ResponseEntity<Pago> buscarPorId(@PathVariable Integer id){
         return pagoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
@@ -35,6 +39,7 @@ public class PagoController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Actualiza un pago por id")
     public ResponseEntity<Pago> actualizar(@PathVariable Integer id, @RequestBody Pago pago){
         try {
             Pago actualizado = pagoService.actualizarPago(id, pago);
@@ -45,12 +50,14 @@ public class PagoController {
     }
 
     @PostMapping("/registrar/{clienteId}")
+    @Operation(summary = "Registra un nuevo pago por clienteId")
     public ResponseEntity<Pago> registrarPago(@PathVariable Integer clienteId, @RequestBody Pago pago){
         Pago pagoNuevo = pagoService.RegistrarPago(clienteId, pago);
         return ResponseEntity.ok(pagoNuevo);
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Elimina pago por id")
     public ResponseEntity<Pago> eliminar(@PathVariable Integer id){
         pagoService.eliminar(id);
         return ResponseEntity.noContent().build();
