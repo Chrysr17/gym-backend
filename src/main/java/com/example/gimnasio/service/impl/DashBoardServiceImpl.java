@@ -1,5 +1,7 @@
 package com.example.gimnasio.service.impl;
 
+import com.example.gimnasio.dto.SedeConcurrenciaDTO;
+import com.example.gimnasio.dto.SedeGananciaDTO;
 import com.example.gimnasio.repository.ClienteRepository;
 import com.example.gimnasio.repository.MaquinaRepository;
 import com.example.gimnasio.repository.PagoRepository;
@@ -8,6 +10,7 @@ import com.example.gimnasio.service.DashboardService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DashBoardServiceImpl implements DashboardService {
@@ -25,13 +28,19 @@ public class DashBoardServiceImpl implements DashboardService {
     }
 
     @Override
-    public List<Object[]> obtenerSedesConMasGanancias() {
-        return pagoRepository.sedeConMasGanancias();
+    public List<SedeGananciaDTO> obtenerSedesConMasGanancias() {
+        return pagoRepository.sedeConMasGanancias()
+                .stream()
+                .map(obj -> new SedeGananciaDTO((String) obj[0], ((Number) obj[1]).doubleValue()))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Object[]> obtenerSedesMasConcurridas() {
-        return clienteRepository.sedeMasConcurrida();
+    public List<SedeConcurrenciaDTO> obtenerSedesMasConcurridas() {
+        return clienteRepository.sedeMasConcurrida()
+                .stream()
+                .map(obj -> new SedeConcurrenciaDTO((String) obj[0],((Number) obj[1]).longValue()))
+                .collect(Collectors.toList());
     }
 
     @Override
