@@ -21,8 +21,9 @@ public class ClienteController {
 
     @GetMapping
     @Operation(summary = "Lista todos los clientes")
-    public List<Cliente> listar() {
-        return clienteService.listarTodos();
+    public ResponseEntity<List<Cliente>> listar() {
+        List<Cliente> clientes = clienteService.listarTodos();
+        return ResponseEntity.ok(clientes);
     }
 
     @GetMapping("/{id}")
