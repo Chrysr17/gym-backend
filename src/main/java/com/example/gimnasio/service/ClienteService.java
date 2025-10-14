@@ -11,6 +11,6 @@ public interface ClienteService {
     Optional<Cliente> buscarPorDni(String dni);
     Cliente guardar(Cliente cliente);
     Cliente actualizarCliente(Integer id, Cliente clienteActualizado);
-    void eliminar(Integer id);
+    void eliminarLogico(Integer id);
     List<Cliente> listarPorSede(Integer sedeId);
 }
