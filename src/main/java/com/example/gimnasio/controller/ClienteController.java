@@ -60,9 +60,9 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Elimina un cliente por id")
+    @Operation(summary = "Elimina de manera lógica un cliente por id")
     public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
-        clienteService.eliminar(id);
+        clienteService.eliminarLogico(id);
         return ResponseEntity.noContent().build();
     }
 
