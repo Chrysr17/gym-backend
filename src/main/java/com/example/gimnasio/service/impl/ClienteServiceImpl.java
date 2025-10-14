@@ -61,6 +61,13 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    public void restaurar(Integer id) {
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        cliente.setEliminado(false);
+        clienteRepository.save(cliente);
+    }
+
+    @Override
     public List<Cliente> listarPorSede(Integer sedeId) {
         return clienteRepository.findBySede_SedeId(sedeId);
     }
