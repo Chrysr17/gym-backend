@@ -3,6 +3,7 @@ package com.example.gimnasio.service.impl;
 import com.example.gimnasio.entity.Cliente;
 import com.example.gimnasio.repository.ClienteRepository;
 import com.example.gimnasio.service.ClienteService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -55,16 +56,14 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public void eliminarLogico(Integer id) {
-        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cliente no encontrado"));
         cliente.setEliminado(true);
         clienteRepository.save(cliente);
     }
 
     @Override
     public void restaurar(Integer id) {
-        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
-        cliente.setEliminado(false);
-        clienteRepository.save(cliente);
+        clienteRepository.restaurarPorId(id);
     }
 
     @Override
