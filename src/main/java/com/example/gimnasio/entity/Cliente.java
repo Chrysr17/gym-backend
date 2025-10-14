@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ResultCheckStyle;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,6 +18,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SQLDelete(sql = "UPDATE cliente SET eliminado = true WHERE cliente_id = ?", check = ResultCheckStyle.COUNT)
+@Where(clause = "eliminado = false")
 public class Cliente {
 
     @Id
@@ -59,5 +64,8 @@ public class Cliente {
     @JoinColumn(name = "usuario_id", nullable = true)
     @JsonBackReference("cliente-usuario")
     private Usuario usuario;
+
+    @Column(name = "eliminado")
+    private boolean eliminado = true;
 
 }
