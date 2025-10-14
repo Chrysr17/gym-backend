@@ -73,11 +73,10 @@ public class ClienteController {
         return clienteService.listarPorSede(sedeId);
     }
 
-    @PutMapping("/restaurar/{id]")
+    @PutMapping("/restaurar/{id}")
     @Operation(summary = "Restaura un cliente eliminado")
     public ResponseEntity<Void> restaurar(@PathVariable Integer id){
         clienteService.restaurar(id);
         return ResponseEntity.noContent().build();
     }
-
 }
