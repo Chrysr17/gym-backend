@@ -66,6 +66,6 @@ public class Cliente {
     private Usuario usuario;
 
     @Column(name = "eliminado")
-    private boolean eliminado = true;
+    private boolean eliminado = false;
 
 }
