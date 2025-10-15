@@ -35,8 +35,9 @@ public class EmpleadoController {
 
     @GetMapping("/sede/{sedeId}")
     @Operation(summary = "Lista empleados por sedeId")
-    public List<Empleado> listarPorSede(@PathVariable Integer sedeId){
-        return empleadoService.listarPorSede(sedeId);
+    public ResponseEntity<List<Empleado>> listarPorSede(@PathVariable Integer sedeId){
+        List<Empleado> empleados = empleadoService.listarPorSede(sedeId);
+        return ResponseEntity.ok(empleados);
     }
 
     @GetMapping("/cargo/{cargo}")
