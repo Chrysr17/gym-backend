@@ -14,4 +14,5 @@ public interface ClienteService {
     void eliminarLogico(Integer id);
     void restaurar(Integer id);
     List<Cliente> listarPorSede(Integer sedeId);
+    List<Cliente> listarEliminados();
 }

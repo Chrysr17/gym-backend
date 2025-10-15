@@ -71,4 +71,9 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteRepository.findBySede_SedeId(sedeId);
     }
 
+    @Override
+    public List<Cliente> listarEliminados() {
+        return List.of();
+    }
+
 }
