@@ -43,8 +43,9 @@ public class EmpleadoController {
 
     @GetMapping("/cargo/{cargo}")
     @Operation(summary = "Lista Empleados por cargo")
-    public List<Empleado> listarPorCargo(@PathVariable String cargo){
-        return empleadoService.listarPorCargo(cargo);
+    public ResponseEntity<List<Empleado>> listarPorCargo(@PathVariable String cargo){
+        List<Empleado> empleados = empleadoService.listarPorCargo(cargo);
+        return ResponseEntity.ok(empleados);
     }
 
     @PostMapping
