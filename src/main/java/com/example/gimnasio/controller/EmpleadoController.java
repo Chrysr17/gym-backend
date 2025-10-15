@@ -21,8 +21,9 @@ public class EmpleadoController {
 
     @GetMapping
     @Operation(summary = "Lista todos los empleados")
-    public List<Empleado> listar(){
-        return empleadoService.listarTodos();
+    public ResponseEntity<List<Empleado>> listar(){
+        List<Empleado> empleados = empleadoService.listarTodos();
+        return ResponseEntity.ok(empleados);
     }
 
     @GetMapping("/{id}")
