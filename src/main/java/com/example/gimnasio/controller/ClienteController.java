@@ -26,6 +26,12 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
     }
 
+    @GetMapping("/eliminados")
+    public ResponseEntity<List<Cliente>> listarEliminados(){
+        List<Cliente> clientes = clienteService.listarEliminados();
+        return ResponseEntity.ok(clientes);
+    }
+
     @GetMapping("/{id}")
     @Operation(summary = "Busca por id")
     public ResponseEntity<Cliente> buscarPorId(@PathVariable Integer id) {
@@ -48,6 +54,7 @@ public class ClienteController {
         Cliente nuevo = clienteService.guardar(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
+
 
     @PutMapping("/{id}")
     @Operation(summary = "Actualiza un cliente por id")

@@ -73,7 +73,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public List<Cliente> listarEliminados() {
-        return List.of();
+        return clienteRepository.listarIncluyendoEliminados();
     }
 
 }

@@ -23,7 +23,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
             "ORDER BY totalClientes DESC")
     List<Object[]> sedeMasConcurrida();
 
-    @Query("SELECT c FROM Cliente c")
+    @Query(value = "SELECT * FROM cliente", nativeQuery = true)
     List<Cliente> listarIncluyendoEliminados();
 
     @Modifying
