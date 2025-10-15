@@ -36,8 +36,9 @@ public class MaquinaController {
 
     @GetMapping("/estado/{estado}")
     @Operation(summary = "Lista maquinas por estado")
-    public List<Maquina> buscarPorEstado(@PathVariable String estado){
-        return maquinaService.buscarPorEstado(estado);
+    public ResponseEntity<List<Maquina>> buscarPorEstado(@PathVariable String estado){
+        List<Maquina> maquinas = maquinaService.buscarPorEstado(estado);
+        return ResponseEntity.ok(maquinas);
     }
 
     @PostMapping
