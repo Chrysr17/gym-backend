@@ -27,6 +27,7 @@ public class ClienteController {
     }
 
     @GetMapping("/eliminados")
+    @Operation(summary = "Lista todos los clientes incluyendo los eliminados")
     public ResponseEntity<List<Cliente>> listarEliminados(){
         List<Cliente> clientes = clienteService.listarEliminados();
         return ResponseEntity.ok(clientes);
