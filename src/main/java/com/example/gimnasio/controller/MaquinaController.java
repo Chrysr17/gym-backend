@@ -21,8 +21,9 @@ public class MaquinaController {
 
     @GetMapping
     @Operation(summary = "Lista todas las maquinas")
-    public List<Maquina> listar(){
-        return maquinaService.listarTodas();
+    public ResponseEntity<List<Maquina>> listar(){
+        List<Maquina> maquinas = maquinaService.listarTodas();
+        return ResponseEntity.ok(maquinas);
     }
 
     @GetMapping("/{id}")
