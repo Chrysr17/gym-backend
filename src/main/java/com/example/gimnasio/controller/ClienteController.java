@@ -77,8 +77,9 @@ public class ClienteController {
 
     @GetMapping("/sede/{sedeId}")
     @Operation(summary = "Lista por sedeId")
-    public List<Cliente> listarPorSede(@PathVariable Integer sedeId) {
-        return clienteService.listarPorSede(sedeId);
+    public ResponseEntity<List<Cliente>> listarPorSede(@PathVariable Integer sedeId) {
+        List<Cliente> clientes= clienteService.listarPorSede(sedeId);
+        return ResponseEntity.ok(clientes);
     }
 
     @PutMapping("/restaurar/{id}")
