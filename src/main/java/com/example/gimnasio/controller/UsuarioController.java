@@ -21,8 +21,9 @@ public class UsuarioController {
 
     @GetMapping
     @Operation(summary = "Lista todos los usuarios")
-    public List<Usuario> listar(){
-        return usuarioService.listarTodos();
+    public ResponseEntity<List<Usuario>> listar(){
+        List<Usuario> usuarios = usuarioService.listarTodos();
+        return ResponseEntity.ok(usuarios);
     }
 
     @GetMapping("/{id}")
