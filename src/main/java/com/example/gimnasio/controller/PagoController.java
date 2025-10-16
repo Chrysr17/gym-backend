@@ -20,14 +20,16 @@ public class PagoController {
 
     @GetMapping
     @Operation(summary = "Lista todos los pagos")
-    public List<Pago> listar(){
-        return pagoService.listarTodos();
+    public ResponseEntity<List<Pago>> listar(){
+        List<Pago> pagos = pagoService.listarTodos();
+        return ResponseEntity.ok(pagos);
     }
 
     @GetMapping("/cliente/{id}")
     @Operation(summary = "Lista pagos por cliente(id)")
-    public List<Pago> listarPorCliente(@PathVariable Integer id){
-        return pagoService.listarPorCliente(id);
+    public ResponseEntity<List<Pago>> listarPorCliente(@PathVariable Integer id){
+        List<Pago> pagos = pagoService.listarPorCliente(id);
+        return ResponseEntity.ok(pagos);
     }
 
     @GetMapping("/{id}")
