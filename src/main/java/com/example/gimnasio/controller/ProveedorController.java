@@ -21,8 +21,9 @@ public class ProveedorController {
 
     @GetMapping
     @Operation(summary = "Lista todos los proveedores")
-    public List<Proveedor> listar(){
-        return proveedorService.listarTodos();
+    public ResponseEntity<List<Proveedor>> listar(){
+        List<Proveedor> proveedores = proveedorService.listarTodos();
+        return ResponseEntity.ok(proveedores);
     }
 
     @GetMapping("/{id}")
@@ -35,8 +36,9 @@ public class ProveedorController {
 
     @GetMapping("/categoria/{categoria}")
     @Operation(summary = "Lista proveedores por categoria")
-    public List<Proveedor> listarPorCategoria(@PathVariable String categoria){
-        return proveedorService.listarPorCategoria(categoria);
+    public ResponseEntity<List<Proveedor>> listarPorCategoria(@PathVariable String categoria){
+        List<Proveedor> proveedores = proveedorService.listarPorCategoria(categoria);
+        return ResponseEntity.ok(proveedores);
     }
 
     @PostMapping
