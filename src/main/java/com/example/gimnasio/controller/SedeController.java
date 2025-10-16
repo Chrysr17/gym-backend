@@ -22,8 +22,9 @@ public class SedeController {
 
     @GetMapping
     @Operation(summary = "Lista todas las sedes")
-    public List<Sede> listar(){
-        return sedeService.listarTodas();
+    public ResponseEntity<List<Sede>> listar(){
+        List<Sede> sedes = sedeService.listarTodas();
+        return ResponseEntity.ok(sedes);
     }
 
     @GetMapping("/{id}")
