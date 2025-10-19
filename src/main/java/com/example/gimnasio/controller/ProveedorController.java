@@ -41,6 +41,14 @@ public class ProveedorController {
         return ResponseEntity.ok(proveedores);
     }
 
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Proveedor>> buscarProveedores(
+            @RequestParam(required = false)String nombre,
+            @RequestParam(required = false)String categoria) {
+        List<Proveedor> proveedors = proveedorService.buscarPorNombreYCategoria(nombre, categoria);
+        return ResponseEntity.ok(proveedors);
+    }
+
     @PostMapping
     @Operation(summary = "Guarda un proveedor")
     public ResponseEntity<Proveedor> guardar(@RequestBody Proveedor proveedor){
