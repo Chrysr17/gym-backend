@@ -12,4 +12,5 @@ public interface ProveedorService {
     Proveedor actualizar(Integer id, Proveedor proveedorActualizado);
     void eliminar(Integer id);
     List<Proveedor> listarPorCategoria(String categoria);
+    List<Proveedor> buscarPorNombreYCategoria(String nombre, String categoria);
 }

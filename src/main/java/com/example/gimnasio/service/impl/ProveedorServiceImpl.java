@@ -52,4 +52,6 @@ public class ProveedorServiceImpl implements ProveedorService {
     public List<Proveedor> listarPorCategoria(String categoria) {
         return proveedorRepository.findByCategoria(categoria);
     }
+
+
 }
