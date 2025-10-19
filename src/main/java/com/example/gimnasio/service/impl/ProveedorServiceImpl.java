@@ -50,13 +50,17 @@ public class ProveedorServiceImpl implements ProveedorService {
 
     @Override
     public List<Proveedor> listarPorCategoria(String categoria) {
-        return proveedorRepository.findByCategoria(categoria);
+        return proveedorRepository.findByCategoriaContainingIgnoreCase(categoria);
     }
 
     @Override
     public List<Proveedor> buscarPorNombreYCategoria(String nombre, String categoria) {
         if (nombre != null && categoria != null){
             return proveedorRepository.findByNombreContainingIgnoreCaseAndCategoriaContainingIgnoreCase(nombre, categoria);
+        } else if (nombre != null) {
+            return proveedorRepository.findByNombreContainingIgnoreCase(nombre);
+        } else if (categoria != null) {
+            return proveedorRepository.findByCategoriaContainingIgnoreCase(categoria);
         }else {
             return proveedorRepository.findAll();
         }

@@ -8,6 +8,7 @@ import java.util.List;
 
 @Repository
 public interface ProveedorRepository extends JpaRepository <Proveedor, Integer>{
-    List<Proveedor> findByCategoria(String categoria);
+    List<Proveedor> findByNombreContainingIgnoreCase(String nombre);
+    List<Proveedor> findByCategoriaContainingIgnoreCase(String categoria);
     List<Proveedor> findByNombreContainingIgnoreCaseAndCategoriaContainingIgnoreCase(String nombre, String categoria);
 }
