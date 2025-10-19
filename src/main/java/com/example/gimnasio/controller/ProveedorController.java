@@ -45,8 +45,8 @@ public class ProveedorController {
     public ResponseEntity<List<Proveedor>> buscarProveedores(
             @RequestParam(required = false)String nombre,
             @RequestParam(required = false)String categoria) {
-        List<Proveedor> proveedors = proveedorService.buscarPorNombreYCategoria(nombre, categoria);
-        return ResponseEntity.ok(proveedors);
+        List<Proveedor> proveedores = proveedorService.buscarPorNombreYCategoria(nombre, categoria);
+        return ResponseEntity.ok(proveedores);
     }
 
     @PostMapping
