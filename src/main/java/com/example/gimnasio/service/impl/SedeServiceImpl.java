@@ -47,7 +47,7 @@ public class SedeServiceImpl implements SedeService {
 
     @Override
     public List<Sede> buscarPorNombre(String nombre) {
-        return sedeRepository.findByNombreContainigIgnoreCase(nombre);
+        return sedeRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
     @Override

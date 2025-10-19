@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/sedes")
 public class SedeController {
 
-    private final SedeService  sedeService;
+    private final SedeService sedeService;
 
     public SedeController(SedeService sedeService) {
         this.sedeService = sedeService;
@@ -22,17 +22,23 @@ public class SedeController {
 
     @GetMapping
     @Operation(summary = "Lista todas las sedes")
-    public ResponseEntity<List<Sede>> listar(){
+    public ResponseEntity<List<Sede>> listar() {
         List<Sede> sedes = sedeService.listarTodas();
         return ResponseEntity.ok(sedes);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Busca una sede por Id")
-    public ResponseEntity<Sede> buscarPorId(@PathVariable Integer id){
+    public ResponseEntity<Sede> buscarPorId(@PathVariable Integer id) {
         return sedeService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<List<Sede>> buscarPoNombre(@PathVariable String nombre){
+        List<Sede> sedes = sedeService.buscarPorNombre(nombre);
+        return ResponseEntity.ok(sedes);
     }
 
     @PostMapping
