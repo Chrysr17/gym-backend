@@ -46,6 +46,11 @@ public class SedeServiceImpl implements SedeService {
     }
 
     @Override
+    public List<Sede> buscarPorNombre(String nombre) {
+        return sedeRepository.findByNombreContainigIgnoreCase(nombre);
+    }
+
+    @Override
     public void eliminar(Integer id) {
         sedeRepository.deleteById(id);
     }
