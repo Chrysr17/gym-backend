@@ -2,6 +2,7 @@ package com.example.gimnasio.controller;
 
 import com.example.gimnasio.service.DashboardService;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class DashboardController {
 
     @GetMapping("/resumen")
     @Operation(summary = "Muestra el resumen para el dashboard")
-    public Map<String, Object> obtenerResumen(){
+    public ResponseEntity<Map<String, Object>> obtenerResumen(){
         Map<String, Object> resumen = new HashMap<>();
         resumen.put("ingresosTotales", dashboardService.obtenerIngresosTotales());
         resumen.put("clientesTotales", dashboardService.obtenerTotalClientes());
@@ -28,8 +29,7 @@ public class DashboardController {
         resumen.put("maquinasTotales", dashboardService.obtenerTotalMaquinas());
         resumen.put("sedesConMasGanancias", dashboardService.obtenerSedesConMasGanancias());
         resumen.put("sedesMasConcurridas", dashboardService.obtenerSedesMasConcurridas());
-        return resumen;
+        return ResponseEntity.ok(resumen);
     }
-
 }
 
