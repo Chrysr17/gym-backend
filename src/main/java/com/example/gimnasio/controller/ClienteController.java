@@ -26,6 +26,13 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
     }
 
+    @GetMapping("/buscar")
+    @Operation(summary = "busca cliente por nombre")
+    public ResponseEntity<List<Cliente>> buscarPorNombre(@RequestParam String nombre){
+        List<Cliente> clientes = clienteService.buscarPorNombre(nombre);
+        return ResponseEntity.ok(clientes);
+    }
+
     @GetMapping("/eliminados")
     @Operation(summary = "Lista todos los clientes incluyendo los eliminados")
     public ResponseEntity<List<Cliente>> listarEliminados(){
@@ -43,7 +50,7 @@ public class ClienteController {
 
     @GetMapping("/dni/{dni}")
     @Operation(summary = "Buscar por dni")
-    public ResponseEntity<Cliente> buscarPorDni(@PathVariable String dni) {
+    public ResponseEntity<Cliente> buscarPorDni(@RequestParam String dni) {
         return clienteService.buscarPorDni(dni)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
