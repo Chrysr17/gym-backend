@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface ClienteService {
     List<Cliente> listarTodos();
+    List<Cliente> buscarPorNombre(String nombre);
     Optional<Cliente> buscarPorId(Integer id);
     Optional<Cliente> buscarPorDni(String dni);
     Cliente guardar(Cliente cliente);

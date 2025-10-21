@@ -23,6 +23,11 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    public List<Cliente> buscarPorNombre(String nombre) {
+        return clienteRepository.findByNombre(nombre);
+    }
+
+    @Override
     public Optional<Cliente> buscarPorId(Integer id) {
         return clienteRepository.findById(id);
     }
