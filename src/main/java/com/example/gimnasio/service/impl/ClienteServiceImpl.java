@@ -24,7 +24,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public List<Cliente> buscarPorNombre(String nombre) {
-        return clienteRepository.findByNombre(nombre);
+        return clienteRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
     @Override
