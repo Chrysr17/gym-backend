@@ -42,7 +42,7 @@ public class ProveedorController {
     }
 
     @GetMapping("/buscar")
-    @Operation(summary = "Buscar proveedores por nombre y cateogoria")
+    @Operation(summary = "Buscar proveedores por nombre y categoria")
     public ResponseEntity<List<Proveedor>> buscarProveedores(
             @RequestParam(required = false)String nombre,
             @RequestParam(required = false)String categoria) {
