@@ -60,4 +60,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
         Cargo cargoEmpleado = Cargo.valueOf(cargo);
         return empleadoRepository.findByCargo(cargoEmpleado);
     }
+
+    @Override
+    public List<Empleado> buscarPorNombre(String nombre) {
+        return empleadoRepository.findByNombreContainingIgnoreCase(nombre);
+    }
 }

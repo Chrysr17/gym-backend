@@ -13,4 +13,5 @@ public interface EmpleadoService {
     void eliminar(Integer id);
     List<Empleado> listarPorSede(Integer sedeId);
     List<Empleado> listarPorCargo(String cargo);
+    List<Empleado> buscarPorNombre(String nombre);
 }
