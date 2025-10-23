@@ -65,7 +65,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 
     @Override
     public List<Maquina> buscarPorNombre(String nombre) {
-        return maquinaRepository.findByNombre(nombre);
+        return maquinaRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
 }
