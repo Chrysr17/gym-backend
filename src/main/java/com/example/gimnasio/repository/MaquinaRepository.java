@@ -11,4 +11,5 @@ import java.util.Optional;
 @Repository
 public interface MaquinaRepository extends JpaRepository<Maquina, Integer> {
     List<Maquina> findByEstado(EstadoMaquina estado);
+    List<Maquina> findByNombre(String nombre);
 }
