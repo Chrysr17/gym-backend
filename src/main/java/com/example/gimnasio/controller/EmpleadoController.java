@@ -49,6 +49,7 @@ public class EmpleadoController {
     }
 
     @GetMapping("/buscar")
+    @Operation(summary = "Busca empleados por nombres y apellidos")
     public ResponseEntity<List<Empleado>> buscar(@RequestParam String nombre){
         List<Empleado> empleados = empleadoService.buscarPorNombre(nombre);
         return ResponseEntity.ok(empleados);
