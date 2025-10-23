@@ -64,7 +64,7 @@ public class MaquinaServiceImpl implements MaquinaService {
     }
 
     @Override
-    public List<Maquina> buscarPornombre(String nombre) {
+    public List<Maquina> buscarPorNombre(String nombre) {
         return maquinaRepository.findByNombre(nombre);
     }
 

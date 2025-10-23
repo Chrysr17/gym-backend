@@ -41,6 +41,12 @@ public class MaquinaController {
         return ResponseEntity.ok(maquinas);
     }
 
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Maquina>> buscar(@RequestParam String nombre){
+        List<Maquina> maquinas = maquinaService.buscarPorNombre(nombre);
+        return ResponseEntity.ok(maquinas);
+    }
+
     @PostMapping
     @Operation(summary = "Guarda una maquina")
     public ResponseEntity<Maquina> guardar(@RequestBody Maquina maquina){
