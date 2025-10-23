@@ -63,4 +63,9 @@ public class MaquinaServiceImpl implements MaquinaService {
         return maquinaRepository.findByEstado(estadoMaquina);
     }
 
+    @Override
+    public List<Maquina> buscarPornombre(String nomnbre) {
+        return List.of();
+    }
+
 }
