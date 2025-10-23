@@ -48,6 +48,12 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleados);
     }
 
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Empleado>> buscar(@RequestParam String nombre){
+        List<Empleado> empleados = empleadoService.buscarPorNombre(nombre);
+        return ResponseEntity.ok(empleados);
+    }
+
     @PostMapping
     @Operation(summary = "Guarda un nuevo empleado")
     public ResponseEntity<Empleado> guardar(@RequestBody Empleado empleado){
