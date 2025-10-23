@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,6 +39,14 @@ public class PagoController {
         return pagoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/rango-fechas")
+    @Operation(summary = "buscar por rangos de fecha")
+    public ResponseEntity<List<Pago>> buscarPorRangoFechas(@RequestParam LocalDate inicio,
+                                                           @RequestParam LocalDate fin){
+        List<Pago> pagos = pagoService.buscarPorRangoFecha(inicio, fin);
+        return ResponseEntity.ok(pagos);
     }
 
     @PutMapping("/{id}")
