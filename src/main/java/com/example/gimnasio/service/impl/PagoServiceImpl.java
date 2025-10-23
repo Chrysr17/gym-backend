@@ -35,6 +35,11 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
+    public List<Pago> buscarPorRangoFecha(LocalDate inicio, LocalDate fin) {
+        return List.of();
+    }
+
+    @Override
     public Optional<Pago> buscarPorId(Integer id) {
         return pagoRepository.findById(id);
     }
