@@ -50,7 +50,7 @@ public class ClienteController {
 
     @GetMapping("/dni/{dni}")
     @Operation(summary = "Buscar por dni")
-    public ResponseEntity<Cliente> buscarPorDni(@RequestParam String dni) {
+    public ResponseEntity<Cliente> buscarPorDni(@PathVariable String dni) {
         return clienteService.buscarPorDni(dni)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
