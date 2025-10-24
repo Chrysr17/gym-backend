@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface MaquinaRepository extends JpaRepository<Maquina, Integer> {
     List<Maquina> findByEstado(EstadoMaquina estado);
     List<Maquina> findByNombreContainingIgnoreCase(String nombre);
+    List<Maquina> findByProveedor_ProveedorId(Integer proveedorId);
 }
