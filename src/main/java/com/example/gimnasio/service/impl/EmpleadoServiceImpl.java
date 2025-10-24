@@ -65,4 +65,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     public List<Empleado> buscarPorNombre(String nombre) {
         return empleadoRepository.findByNombreContainingIgnoreCase(nombre);
     }
+
+    @Override
+    public List<Empleado> buscarPorDni(String Dni) {
+        return List.of();
+    }
 }

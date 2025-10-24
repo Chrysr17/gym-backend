@@ -14,4 +14,5 @@ public interface EmpleadoService {
     List<Empleado> listarPorSede(Integer sedeId);
     List<Empleado> listarPorCargo(String cargo);
     List<Empleado> buscarPorNombre(String nombre);
+    List<Empleado> buscarPorDni(String Dni);
 }
