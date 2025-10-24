@@ -55,6 +55,14 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleados);
     }
 
+    @GetMapping("/dni/{dni}")
+    @Operation(summary = "Busca un empleado por Dni")
+    public ResponseEntity<Empleado> busarPorDni(@PathVariable String dni){
+        return empleadoService.buscarPorDni(dni)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     @Operation(summary = "Guarda un nuevo empleado")
     public ResponseEntity<Empleado> guardar(@RequestBody Empleado empleado){
