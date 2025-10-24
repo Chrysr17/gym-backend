@@ -6,11 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
     List<Empleado> findBySede_SedeId(Integer sedeId);
     List<Empleado> findByCargo(Cargo cargo);
     List<Empleado> findByNombreContainingIgnoreCase(String nombre);
-    List<Empleado> findByDni(String dni);
+    Optional<Empleado> findByDni(String dni);
 }

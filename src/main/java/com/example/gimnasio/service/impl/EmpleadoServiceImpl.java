@@ -67,7 +67,8 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     }
 
     @Override
-    public List<Empleado> buscarPorDni(String Dni) {
-        return List.of();
+    public Optional<Empleado> buscarPorDni(String dni) {
+        return empleadoRepository.findByDni(dni);
     }
+
 }
