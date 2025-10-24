@@ -12,4 +12,5 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
     List<Empleado> findBySede_SedeId(Integer sedeId);
     List<Empleado> findByCargo(Cargo cargo);
     List<Empleado> findByNombreContainingIgnoreCase(String nombre);
+    List<Empleado> findByDni(String dni);
 }
