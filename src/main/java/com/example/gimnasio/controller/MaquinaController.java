@@ -48,6 +48,13 @@ public class MaquinaController {
         return ResponseEntity.ok(maquinas);
     }
 
+    @GetMapping("/{proveedorId}/maquinas")
+    @Operation(summary = "Lista maquinas por proveedor")
+    public ResponseEntity<List<Maquina>> listarPorProveedor(@PathVariable Integer proveedorId){
+        List<Maquina> maquinas = maquinaService.listarPorProvedor(proveedorId);
+        return ResponseEntity.ok(maquinas);
+    }
+
     @PostMapping
     @Operation(summary = "Guarda una maquina")
     public ResponseEntity<Maquina> guardar(@RequestBody Maquina maquina){
