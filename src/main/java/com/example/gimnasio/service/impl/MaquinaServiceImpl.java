@@ -68,4 +68,9 @@ public class MaquinaServiceImpl implements MaquinaService {
         return maquinaRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
+    @Override
+    public List<Maquina> listarPorProvedor(Integer proveedorId) {
+        return List.of();
+    }
+
 }

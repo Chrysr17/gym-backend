@@ -13,4 +13,5 @@ public interface MaquinaService {
     void eliminar(Integer id);
     List<Maquina> buscarPorEstado(String estado);
     List<Maquina> buscarPorNombre(String nombre);
+    List<Maquina> listarPorProvedor(Integer proveedorId);
 }
