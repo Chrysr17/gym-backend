@@ -70,7 +70,7 @@ public class MaquinaServiceImpl implements MaquinaService {
 
     @Override
     public List<Maquina> listarPorProvedor(Integer proveedorId) {
-        return List.of();
+        return maquinaRepository.findByProveedor_ProveedorId(proveedorId);
     }
 
 }
