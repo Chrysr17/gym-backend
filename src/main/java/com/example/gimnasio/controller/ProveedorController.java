@@ -1,6 +1,8 @@
 package com.example.gimnasio.controller;
 
+import com.example.gimnasio.entity.Maquina;
 import com.example.gimnasio.entity.Proveedor;
+import com.example.gimnasio.service.MaquinaService;
 import com.example.gimnasio.service.ProveedorService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
@@ -14,9 +16,11 @@ import java.util.List;
 public class ProveedorController {
 
     private final ProveedorService proveedorService;
+    private final MaquinaService maquinaService;
 
-    public ProveedorController(ProveedorService proveedorService) {
+    public ProveedorController(ProveedorService proveedorService, MaquinaService maquinaService) {
         this.proveedorService = proveedorService;
+        this.maquinaService = maquinaService;
     }
 
     @GetMapping
@@ -48,6 +52,12 @@ public class ProveedorController {
             @RequestParam(required = false)String categoria) {
         List<Proveedor> proveedores = proveedorService.buscarPorNombreYCategoria(nombre, categoria);
         return ResponseEntity.ok(proveedores);
+    }
+    @GetMapping("/{id}/maquinas")
+    @Operation(summary = "Lista maquinas por proveedor")
+    public ResponseEntity<List<Maquina>> listarPorProveedor(@PathVariable Integer id){
+        List<Maquina> maquinas = maquinaService.listarPorProvedor(id);
+        return ResponseEntity.ok(maquinas);
     }
 
     @PostMapping
