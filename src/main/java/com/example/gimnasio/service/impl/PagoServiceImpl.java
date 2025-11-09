@@ -56,7 +56,7 @@ public class PagoServiceImpl implements PagoService {
                     pagoExistente.setFecha(pagoActualizado.getFecha());
                     pagoExistente.setMonto(pagoActualizado.getMonto());
                     pagoExistente.setEstado(pagoActualizado.getEstado());
-                    return pagoRepository.save(pagoActualizado);
+                    return pagoRepository.save(pagoExistente);
                 }).orElseThrow(() -> new RuntimeException("Pago no encontrado"));
     }
 

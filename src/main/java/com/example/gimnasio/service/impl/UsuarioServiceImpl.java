@@ -38,7 +38,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .map(usuarioExistente -> {
                     usuarioExistente.setNombreUsuario(usuarioActualizado.getNombreUsuario());
                     usuarioExistente.setPassword(usuarioActualizado.getPassword());
-                    return usuarioRepository.save(usuarioActualizado);
+                    return usuarioRepository.save(usuarioExistente);
                 }).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 

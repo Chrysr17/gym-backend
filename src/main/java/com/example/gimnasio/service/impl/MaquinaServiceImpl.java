@@ -48,7 +48,7 @@ public class MaquinaServiceImpl implements MaquinaService {
                     if (maquinaActualizada.getProveedor() != null) {
                         maquinaExistente.setProveedor(maquinaActualizada.getProveedor());
                     }
-                    return maquinaRepository.save(maquinaActualizada);
+                    return maquinaRepository.save(maquinaExistente);
                 }).orElseThrow(() -> new RuntimeException("Maquina no encontrada"));
     }
 

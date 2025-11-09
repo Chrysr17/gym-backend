@@ -41,7 +41,7 @@ public class SedeServiceImpl implements SedeService {
                     sedeExistente.setDireccion(sedeActualizada.getDireccion());
                     sedeExistente.setMaquinas(sedeActualizada.getMaquinas());
                     sedeExistente.setEmpleados(sedeActualizada.getEmpleados());
-                    return sedeRepository.save(sedeActualizada);
+                    return sedeRepository.save(sedeExistente);
                 }).orElseThrow(() -> new RuntimeException("Sede no encontrada"));
     }
 
