@@ -3,6 +3,7 @@ package com.example.gimnasio.controller;
 import com.example.gimnasio.entity.Pago;
 import com.example.gimnasio.service.PagoService;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,7 +65,7 @@ public class PagoController {
     @Operation(summary = "Registra un nuevo pago por clienteId")
     public ResponseEntity<Pago> registrarPago(@PathVariable Integer clienteId, @RequestBody Pago pago){
         Pago pagoNuevo = pagoService.registrarPago(clienteId, pago);
-        return ResponseEntity.ok(pagoNuevo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(pagoNuevo);
     }
 
     @DeleteMapping("/{id}")

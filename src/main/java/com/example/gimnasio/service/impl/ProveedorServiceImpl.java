@@ -38,7 +38,9 @@ public class ProveedorServiceImpl implements ProveedorService {
                 .map(proveedorExistente -> {
                     proveedorExistente.setNombre(proveedorActualizado.getNombre());
                     proveedorExistente.setCategoria(proveedorActualizado.getCategoria());
-                    proveedorExistente.setMaquinas(proveedorActualizado.getMaquinas());
+                    if (proveedorActualizado.getMaquinas() != null && !proveedorActualizado.getMaquinas().isEmpty()) {
+                        proveedorExistente.setMaquinas(proveedorActualizado.getMaquinas());
+                    }
                     return proveedorRepository.save(proveedorExistente);
                 }).orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
     }
