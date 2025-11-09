@@ -72,7 +72,7 @@ public class ProveedorController {
     public ResponseEntity<Proveedor> actualizar(@PathVariable Integer id, @RequestBody Proveedor proveedor){
         try {
             Proveedor actualizado =  proveedorService.actualizar(id, proveedor);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(actualizado);
         } catch (RuntimeException e){
             return ResponseEntity.notFound().build();
         }
