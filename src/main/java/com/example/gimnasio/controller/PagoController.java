@@ -63,7 +63,7 @@ public class PagoController {
     @PostMapping("/registrar/{clienteId}")
     @Operation(summary = "Registra un nuevo pago por clienteId")
     public ResponseEntity<Pago> registrarPago(@PathVariable Integer clienteId, @RequestBody Pago pago){
-        Pago pagoNuevo = pagoService.RegistrarPago(clienteId, pago);
+        Pago pagoNuevo = pagoService.registrarPago(clienteId, pago);
         return ResponseEntity.ok(pagoNuevo);
     }
 

@@ -61,7 +61,7 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public Pago RegistrarPago(Integer clienteId, Pago pago) {
+    public Pago registrarPago(Integer clienteId, Pago pago) {
         Cliente cliente = clienteRepository.findById(clienteId)
                 .orElseThrow(() -> new RuntimeException("Cliente no econtrado"));
         pago.setCliente(cliente);
