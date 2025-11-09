@@ -33,7 +33,7 @@ public class ProveedorServiceImpl implements ProveedorService {
     }
 
     @Override
-    public Proveedor actualizar(Integer id, Proveedor proveedorActualizado) {
+    public Proveedor actualizarProveedor(Integer id, Proveedor proveedorActualizado) {
         return proveedorRepository.findById(id)
                 .map(proveedorExistente -> {
                     proveedorExistente.setNombre(proveedorActualizado.getNombre());
