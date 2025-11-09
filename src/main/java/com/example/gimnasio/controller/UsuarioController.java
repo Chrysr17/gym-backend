@@ -27,7 +27,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Busca un pago por id")
+    @Operation(summary = "Busca un usuario por id")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Integer id){
         return usuarioService.buscarPorId(id)
                 .map(ResponseEntity::ok)
