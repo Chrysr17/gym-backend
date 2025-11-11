@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,6 +22,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@WebMvcTest(PagoController.class)
 class PagoControllerTest {
 
     @Autowired
@@ -78,7 +80,7 @@ class PagoControllerTest {
 
         mockMvc.perform(get("/api/pagos/cliente/1"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].cliente.nombre").value("Juan Pérez"));
+                .andExpect(jsonPath("$[0].monto").value(120.50));
     }
 
     @Test
