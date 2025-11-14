@@ -1,6 +1,8 @@
 package com.example.gimnasio.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +33,7 @@ public class Empleado {
 
     @ManyToOne
     @JoinColumn(name = "sede_id", nullable = false)
-    @JsonBackReference("sede-empleados")
+    @JsonIgnoreProperties("empleados")
     private Sede sede;
 
 }
