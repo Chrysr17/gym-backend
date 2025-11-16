@@ -1,15 +1,13 @@
 package com.example.gimnasio.controller;
 
+import com.example.gimnasio.dto.LoginRequest;
 import com.example.gimnasio.entity.Cliente;
 import com.example.gimnasio.entity.Rol;
 import com.example.gimnasio.entity.Usuario;
 import com.example.gimnasio.repository.UsuarioRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -26,16 +24,15 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestParam String nombreUsuario,
-                                   @RequestParam String password) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findByNombreUsuario(nombreUsuario);
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByNombreUsuario(request.getNombreUsuario());
 
         if (usuarioOptional.isEmpty()) {
             return ResponseEntity.badRequest().body("Usuario no encontrado");
         }
 
         Usuario usuario = usuarioOptional.get();
-        if (!passwordEncoder.matches(password, usuario.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), usuario.getPassword())) {
             return ResponseEntity.badRequest().body("Contraseña incorrecta");
         }
 
