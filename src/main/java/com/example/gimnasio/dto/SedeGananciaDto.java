@@ -1,13 +1,13 @@
 package com.example.gimnasio.dto;
 
-public class SedeGananciaDTO {
+public class SedeGananciaDto {
     private String nombre;
     private Double ganancias;
 
-    public SedeGananciaDTO() {
+    public SedeGananciaDto() {
     }
 
-    public SedeGananciaDTO(String nombre, Double ganancias) {
+    public SedeGananciaDto(String nombre, Double ganancias) {
         this.nombre = nombre;
         this.ganancias = ganancias;
     }

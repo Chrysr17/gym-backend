@@ -1,7 +1,7 @@
 package com.example.gimnasio.service.impl;
 
-import com.example.gimnasio.dto.SedeConcurrenciaDTO;
-import com.example.gimnasio.dto.SedeGananciaDTO;
+import com.example.gimnasio.dto.SedeConcurrenciaDto;
+import com.example.gimnasio.dto.SedeGananciaDto;
 import com.example.gimnasio.repository.ClienteRepository;
 import com.example.gimnasio.repository.MaquinaRepository;
 import com.example.gimnasio.repository.PagoRepository;
@@ -28,18 +28,18 @@ public class DashBoardServiceImpl implements DashboardService {
     }
 
     @Override
-    public List<SedeGananciaDTO> obtenerSedesConMasGanancias() {
+    public List<SedeGananciaDto> obtenerSedesConMasGanancias() {
         return pagoRepository.sedeConMasGanancias()
                 .stream()
-                .map(obj -> new SedeGananciaDTO((String) obj[0], ((Number) obj[1]).doubleValue()))
+                .map(obj -> new SedeGananciaDto((String) obj[0], ((Number) obj[1]).doubleValue()))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<SedeConcurrenciaDTO> obtenerSedesMasConcurridas() {
+    public List<SedeConcurrenciaDto> obtenerSedesMasConcurridas() {
         return clienteRepository.sedeMasConcurrida()
                 .stream()
-                .map(obj -> new SedeConcurrenciaDTO((String) obj[0],((Number) obj[1]).longValue()))
+                .map(obj -> new SedeConcurrenciaDto((String) obj[0],((Number) obj[1]).longValue()))
                 .collect(Collectors.toList());
     }
 

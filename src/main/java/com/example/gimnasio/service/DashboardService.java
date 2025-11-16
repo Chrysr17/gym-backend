@@ -1,13 +1,13 @@
 package com.example.gimnasio.service;
 
-import com.example.gimnasio.dto.SedeConcurrenciaDTO;
-import com.example.gimnasio.dto.SedeGananciaDTO;
+import com.example.gimnasio.dto.SedeConcurrenciaDto;
+import com.example.gimnasio.dto.SedeGananciaDto;
 
 import java.util.List;
 
 public interface DashboardService {
-    List<SedeGananciaDTO> obtenerSedesConMasGanancias();
-    List<SedeConcurrenciaDTO> obtenerSedesMasConcurridas();
+    List<SedeGananciaDto> obtenerSedesConMasGanancias();
+    List<SedeConcurrenciaDto> obtenerSedesMasConcurridas();
 
     Double obtenerIngresosTotales();
     Long obtenerTotalClientes();

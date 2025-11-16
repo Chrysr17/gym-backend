@@ -1,10 +1,10 @@
 package com.example.gimnasio.dto;
 
-public class SedeConcurrenciaDTO {
+public class SedeConcurrenciaDto {
     private String nombre;
     private Long totalClientes;
 
-    public SedeConcurrenciaDTO(String nombre, Long totalClientes) {
+    public SedeConcurrenciaDto(String nombre, Long totalClientes) {
         this.nombre = nombre;
         this.totalClientes = totalClientes;
     }
